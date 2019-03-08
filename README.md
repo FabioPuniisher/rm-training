@@ -1,6 +1,6 @@
 # rm-training
 
-To-do list <br/ >
+To-do list
 -Web-Site em HTML/CSS/JS
 -Pesquisa de personagens pelo nome
 -Filtro de Pesquisa
