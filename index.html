@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,139 +9,22 @@
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/main.css">
 </head>
+
 <body>
     <header>
         <img src="assets/background_1.png" alt="">
     </header>
     <main class="container">
-        <form class="search-form">
-            <input type="search" value="" placeholder="Procurar" class="search-input">
-            <!-- <button type="submit" class="search-button">
-            </button> -->
+        <form class="search-form" onsubmit="return findCharacter()">
+            <!-- <form class="search-form"> -->
+            <input type="search" value="" placeholder="Procurar pelo nome" id="search" class="search-input">
         </form>
-        <div class="characters">
-            <div class="character">
-                <img src="assets/rick.jpeg" alt="">
-                <div class="info">
-                    <ul>
-                        <li>
-                            <span class="left">key</span>
-                            <span class="right">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
-                        </li>
-                        <li>
-                            <span class="left">key</span>
-                            <span class="right">value</span>
-                        </li>
-                        <li>
-                            <span class="left">key</span>
-                            <span class="right">value</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="character">
-                <img src="assets/evil-morty.jpeg" alt="">
-                <div class="info">
-                    <ul>
-                        <li>
-                            <span class="left">key</span>
-                            <span class="right">value</span>
-                        </li>
-                        <li>
-                            <span class="left">key</span>
-                            <span class="right">value</span>
-                        </li>
-                        <li>
-                            <span class="left">key</span>
-                            <span class="right">value</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="character">
-                <img src="https://via.placeholder.com/300" alt="">
-                <div class="info">
-                    <ul>
-                        <li>
-                            <span class="left">key</span>
-                            <span class="right">value</span>
-                        </li>
-                        <li>
-                            <span class="left">key</span>
-                            <span class="right">value</span>
-                        </li>
-                        <li>
-                            <span class="left">key</span>
-                            <span class="right">value</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="character">
-                <img src="https://via.placeholder.com/300" alt="">
-                <div class="info">
-                    <ul>
-                        <li>
-                            <span class="left">key</span>
-                            <span class="right">value</span>
-                        </li>
-                        <li>
-                            <span class="left">key</span>
-                            <span class="right">value</span>
-                        </li>
-                        <li>
-                            <span class="left">key</span>
-                            <span class="right">value</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="character">
-                <img src="https://via.placeholder.com/300" alt="">
-                <div class="info">
-                    <ul>
-                        <li>
-                            <span class="left">key</span>
-                            <span class="right">value</span>
-                        </li>
-                        <li>
-                            <span class="left">key</span>
-                            <span class="right">value</span>
-                        </li>
-                        <li>
-                            <span class="left">key</span>
-                            <span class="right">value</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="character">
-                <img src="https://via.placeholder.com/300" alt="">
-                <div class="info">
-                    <ul>
-                        <li>
-                            <span class="left">key</span>
-                            <span class="right">value</span>
-                        </li>
-                        <li>
-                            <span class="left">key</span>
-                            <span class="right">value</span>
-                        </li>
-                        <li>
-                            <span class="left">key</span>
-                            <span class="right">value</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+        <span class="error" hidden>Não foi possível encontrar nenhum personagem.</span>
+        <img class="spinner" src="assets/spinner.svg" alt="loading" hidden>
+        <div class="main-wrapper"></div>
     </main>
     <footer></footer>
 </body>
 <script src="js/main.js"></script>
+
 </html>
