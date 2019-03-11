@@ -10,9 +10,6 @@ window.onload = function () {
 
 function showRandomCharacters() {
     let ids = [];
-    let charactersData = {
-        results: [],
-    };
     let i = 0;
 
     while(i < 10) {
@@ -25,28 +22,22 @@ function showRandomCharacters() {
         }
     }
 
-    ids.forEach(function(id, idx) {
-        fetch(`https://rickandmortyapi.com/api/character/${id}`)
-            .then(function (res) {
-                if (!res.ok) {
-                    errorElement.removeAttribute('hidden');
-                    throw new Error('A API não retornou OK');
-                }
-
-                return res.json();
-            })
-            .then(function (data) {
-                charactersData.results.push(data);
-
-                if (idx === ids.length-1) {
-                    createCharacters(charactersData);
-                }
-            })
-            .catch(function (e) {
+    fetch(`https://rickandmortyapi.com/api/character/${ids.join(',')}`)
+        .then(function (res) {
+            if (!res.ok) {
                 errorElement.removeAttribute('hidden');
-                console.error(e);
-            });
-    });
+                throw new Error('A API não retornou OK');
+            }
+
+            return res.json();
+        })
+        .then(function (data) {
+            createCharacters({results: data});            
+        })
+        .catch(function (e) {
+            errorElement.removeAttribute('hidden');
+            console.error(e);
+        });
 }
 
 function findCharacter() {
