@@ -18,8 +18,10 @@
         <form class="search-form" onsubmit="return findCharacter()">
             <!-- <form class="search-form"> -->
             <input type="search" value="" placeholder="Procurar pelo nome" id="search" class="search-input">
-            <select id="status"></select>
-            <select id="gender"></select>
+            <div class="selector-wrapper">
+                <select id="status" class="selector"></select>
+                <select id="gender" class="selector"></select>
+            </div>
         </form>
         <span class="error" hidden>Não foi possível encontrar nenhum personagem.</span>
         <img class="spinner" src="assets/spinner.svg" alt="loading" hidden>

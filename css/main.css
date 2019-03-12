@@ -116,3 +116,17 @@ figcaption {
 figcaption small {
     margin-left: 10px;
 }
+
+.selector-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 45%);
+    grid-gap: 1rem;
+    justify-content: center;
+    padding-top: 0.5rem;
+}
+
+.selector {
+   height: 2rem;
+}
+
+}
