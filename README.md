@@ -3,6 +3,6 @@
 ✔️To-do list
 - Web-Site em HTML/CSS/JS ✔️
 - Pesquisa de personagens pelo nome ✔️
-- Filtro de Pesquisa ❌
+- Filtro de Pesquisa ✔️
 - Portar pra vue ❌
 - Portar pra react ❌
