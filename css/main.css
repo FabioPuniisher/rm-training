@@ -129,4 +129,16 @@ figcaption small {
    height: 2rem;
 }
 
+.pagination {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 64px 32px 64px;
+    margin-top: 1rem;
+    visibility: hidden;
+}
+
+.pagination span {
+    color: #ffffff;
+    margin: 0 auto;
+    line-height: 1.5;
 }

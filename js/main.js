@@ -4,11 +4,16 @@ const genderSelect = document.getElementById('gender');
 const mainWrapper = document.querySelector('.main-wrapper');
 const errorElement = document.querySelector('.error');
 const spinnerElement = document.querySelector('.spinner');
+const paginationElement = document.querySelector('.pagination');
+const paginationBackward = paginationElement.querySelectorAll('button')[0];
+const paginationForward = paginationElement.querySelectorAll('button')[1];
+const paginationText = paginationElement.querySelector('span');
+
 const CHARACTERS_COUNT = 493;
 
 const statuses = [
     {
-        text: 'Todos',
+        text: 'Todos os estados',
         value: '',
     },
     {
@@ -27,7 +32,7 @@ const statuses = [
 
 const genders = [
     {
-        text: 'Todos',
+        text: 'Todos os gêneros',
         value: '',
     },
     {
@@ -94,10 +99,6 @@ function findCharacter() {
         return;
     }
 
-    spinnerElement.removeAttribute('hidden');
-    errorElement.setAttribute('hidden', true);
-    removeCharacterElements();
-
     // https://rickandmortyapi.com/api/character/?name={name}
 
     const params = {
@@ -108,8 +109,17 @@ function findCharacter() {
         // type
     };
 
-    fetch(`https://rickandmortyapi.com/api/character/?${serialize(params)}`)
-        .then(function(res) {
+    doRequest(`https://rickandmortyapi.com/api/character/?${serialize(params)}`);
+    return false;
+}
+
+function doRequest(url) {
+    spinnerElement.removeAttribute('hidden');
+    errorElement.setAttribute('hidden', true);
+    removeCharacterElements();
+
+    fetch(url)
+        .then(function (res) {
             if (!res.ok) {
                 errorElement.removeAttribute('hidden');
                 throw new Error('A API não retornou OK');
@@ -117,15 +127,14 @@ function findCharacter() {
 
             return res.json();
         })
-        .then(function(data) {
+        .then(function (data) {
+            pagination(data.info);
             createCharacters(data);
         })
-        .catch(function(e) {
+        .catch(function (e) {
             errorElement.removeAttribute('hidden');
             console.error(e);
         });
-
-    return false;
 }
 
 function createCharacters(data) {
@@ -209,6 +218,45 @@ function setupSelectors() {
         option.textContent = gender.text;
         genderSelect.appendChild(option);
     });
+}
+
+// data = info object from API response
+function pagination(data) {
+    if (data.pages > 1) {
+        paginationElement.style.visibility = 'visible';
+
+        if (data.prev !== '') {
+            paginationBackward.onclick = function() {
+                doRequest(data.prev);
+            };
+
+            paginationBackward.style.visibility = 'visible';
+
+            const urlParams = new URLSearchParams(new URL(data.prev).search);
+
+            if (urlParams.has('page')) {
+                paginationText.textContent = String(parseInt(urlParams.get('page')) + 1);                
+            }
+
+        } else {
+            paginationBackward.onclick = function() {};
+            paginationBackward.style.visibility = 'hidden';
+            paginationText.textContent = '1';
+        }
+
+        if (data.next !== '') {
+            paginationForward.onclick = function() {
+                doRequest(data.next);
+            };
+
+            paginationForward.style.visibility = 'visible';
+        } else {
+            paginationForward.onclick = function () {};
+            paginationForward.style.visibility = 'hidden';
+        }
+    } else {
+        paginationElement.style.visibility = 'hidden';
+    }
 }
 
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random#Getting_a_random_integer_between_two_values_inclusive
