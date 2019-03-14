@@ -4,7 +4,9 @@
   "description": "Training",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "node_modules/.bin/webpack-dev-server",
+    "build": "node_modules/.bin/webpack"
   },
   "repository": {
     "type": "git",
@@ -15,5 +17,19 @@
   "bugs": {
     "url": "https://github.com/FabioRelvas/rm-training/issues"
   },
-  "homepage": "https://github.com/FabioRelvas/rm-training#readme"
+  "homepage": "https://github.com/FabioRelvas/rm-training#readme",
+  "devDependencies": {
+    "@babel/core": "^7.3.4",
+    "@babel/preset-env": "^7.3.4",
+    "babel-loader": "^8.0.5",
+    "clean-webpack-plugin": "^2.0.0",
+    "copy-webpack-plugin": "^5.0.1",
+    "css-loader": "^2.1.1",
+    "node-sass": "^4.11.0",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.2.3",
+    "webpack-dev-server": "^3.2.1"
+  }
 }
