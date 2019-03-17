@@ -16,7 +16,7 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
     new CopyPlugin([
-      { from: 'public/', to: './' },
+      {from: 'public/', to: './'},
     ]),
   ],
   module: {
